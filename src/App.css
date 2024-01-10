@@ -1,3 +1,15 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+.product-list {
+  display: flex;
+  gap: 45px;
+  justify-content: space-around;
+}
+
+.category-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FaInfoCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-function Welcome({ itemData }) {
+
+export function Welcome({ itemData }) {
 
   // let like = 10;
   const [like, setLike] = useState(0);
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    console.log("Like is updated")
+  })
+
 
   const styles = {
     //terinary operator => condition ? if condition true  : if condition false
@@ -18,11 +26,20 @@ function Welcome({ itemData }) {
     display: show ? "block" : "none"
   };
 
+  const navigate = useNavigate()
+
   return (
     <div>
       {/* conditional styling */}
-      <h5>Title:{itemData.title} - <p style={styles}>⭐{itemData.rating}</p></h5>
-      <p>Category: {itemData.category}</p>
+
+      <h5>Title:{itemData.title} - {itemData.id} <p style={styles}>⭐{itemData.rating} </p></h5>
+
+      <div className="category-style">
+        <p>Category: {itemData.category}</p>
+        {/* `` => backtick + $ => interpolation  */}
+        <FaInfoCircle onClick={() => navigate(`/items/${itemData.id}`)} />
+      </div>
+
       <div style={{ display: "flex", justifyContent: "space-around", border: "1px solid black" }}>
         {/* <h4 style={contentStyle}>Imagine the Impossible</h4> */}
         {/* conditional rendering */}
@@ -33,7 +50,7 @@ function Welcome({ itemData }) {
       </div>
       <button onClick={() => {
         setLike(like + 1);
-        console.log(like);
+        // console.log(like);
       }}>Like {like}</button>
     </div>
   );
