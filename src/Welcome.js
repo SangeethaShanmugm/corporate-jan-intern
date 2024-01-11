@@ -3,7 +3,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 
-export function Welcome({ itemData }) {
+export function Welcome({ itemData, onRemove }) {
 
   // let like = 10;
   const [like, setLike] = useState(0);
@@ -52,6 +52,7 @@ export function Welcome({ itemData }) {
         setLike(like + 1);
         // console.log(like);
       }}>Like {like}</button>
+      <button onClick={()=>onRemove()}>Remove</button>
     </div>
   );
 }

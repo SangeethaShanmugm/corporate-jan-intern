@@ -4,6 +4,10 @@ import LifeCycleA from './classcomponent/LifeCycleA';
 import { Routes, Route, Link } from "react-router-dom"
 import { Home } from './Home';
 import { ProductList } from './ProductList';
+import { ProductDetail } from './ProductDetail';
+import { Reducer } from './Reducer';
+import { Ref } from './Ref';
+import UseCallBack from './UseCallBack';
 function App() {
   //JS starts
   const people = ["Srivarthan", "Priya", "Navin", "Rahul"]//Array of strings
@@ -20,6 +24,9 @@ function App() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/class">LifeCycleA</Link></li>
           <li><Link to="/items">ProductList</Link></li>
+          <li><Link to="/reducer">Reducer</Link></li>
+          <li><Link to="/ref">Ref</Link></li>
+          <li><Link to="/useCallBack">UseCallBack</Link></li>
         </ul>
       </nav>
 
@@ -28,17 +35,13 @@ function App() {
         <Route path="/class" element={<LifeCycleA />} />
         <Route path="/items" element={<ProductList />} />
         <Route path="/items/:id" element={<ProductDetail />} />
+        <Route path="/reducer" element={<Reducer />} />
+        <Route path="/ref" element={<Ref />} />
+        <Route path="/useCallBack" element={<UseCallBack />} />
       </Routes>
     </div>
   );
   //JSX ends
-}
-
-
-function ProductDetail() {
-  return (
-    <div>ProductDetail Page</div>
-  )
 }
 
 export default App;

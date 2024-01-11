@@ -1,5 +1,5 @@
 import { Welcome } from './Welcome';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function ProductList() {
   const [items, setItems] = useState([]);
@@ -13,35 +13,6 @@ export function ProductList() {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []); //call only once
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // const items = [
   //   {
@@ -69,10 +40,16 @@ export function ProductList() {
   //     rating: 9,
   //   },
   // ]
+  const handleRemove = useCallback(() => {
+    console.log("Button Clicked")
+  }, [])
+
+
+
   return (
     <div className='product-list'>
       {items.map((item) => (
-        <Welcome key={item.id} itemData={item} />
+        <Welcome key={item.id} itemData={item} onRemove={handleRemove} />
       ))}
     </div>
   );
