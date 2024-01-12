@@ -1,6 +1,10 @@
 import { Welcome } from './Welcome';
 import { useState, useEffect, useCallback } from "react";
-
+import { API } from './global';
+import { MdDelete } from "react-icons/md";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import { useNavigate } from "react-router-dom"
 export function ProductList() {
   const [items, setItems] = useState([]);
 
@@ -8,11 +12,13 @@ export function ProductList() {
   // chefA(function chefB(){
   // //prepare cake => done 
   // }, instruction)
-  useEffect(() => {
-    fetch("https://659e6ba547ae28b0bd35caec.mockapi.io/products")
+  const getProducts = () => {
+    fetch(`${API}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => setItems(data));
-  }, []); //call only once
+  }
+
+  useEffect(() => getProducts(), []) //call only once
 
   // const items = [
   //   {
@@ -46,10 +52,27 @@ export function ProductList() {
 
 
 
+  const handleDelete = (id) => {
+    fetch(`${API}/${id}`, { method: "DELETE" })
+      .then(() => getProducts());
+  }
+  const navigate = useNavigate()
+
+
   return (
     <div className='product-list'>
       {items.map((item) => (
-        <Welcome key={item.id} itemData={item} onRemove={handleRemove} />
+        <Welcome key={item.id} itemData={item} onRemove={handleRemove}
+          addButton={
+            <IoIosAddCircleOutline color="blue" onClick={() => navigate("/items/add")} />
+          }
+          deleteButton={
+            <MdDelete color="red" onClick={() => handleDelete(item.id)} />
+          }
+          editButton={
+            <MdEdit color="purple" onClick={() => navigate(`/items/edit/${item.id}`)} />
+          }
+        />
       ))}
     </div>
   );

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { API } from "./global"
 
-
-export function Welcome({ itemData, onRemove }) {
+export function Welcome({ itemData, onRemove, deleteButton, addButton, editButton }) {
 
   // let like = 10;
   const [like, setLike] = useState(0);
@@ -27,6 +30,10 @@ export function Welcome({ itemData, onRemove }) {
   };
 
   const navigate = useNavigate()
+
+
+
+
 
   return (
     <div>
@@ -52,7 +59,18 @@ export function Welcome({ itemData, onRemove }) {
         setLike(like + 1);
         // console.log(like);
       }}>Like {like}</button>
-      <button onClick={()=>onRemove()}>Remove</button>
+      <button onClick={() => onRemove()}>Remove</button>
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between"
+      }}>
+        {addButton}
+        {editButton}
+        {deleteButton}
+
+      </div>
+
+
     </div>
   );
 }
