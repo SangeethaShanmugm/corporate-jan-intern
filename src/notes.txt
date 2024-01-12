@@ -1,0 +1,141 @@
+React => fb => Jordan Walke
+
+features
+---------
+
+1. SPA => Single Page Application => Routing
+2. Reusability
+3. Virtual DOM - object => {k:v} => performance ⬆️
+{
+    animal:"🐮",
+    type:"domestic"
+}
+
+reconcilation  => profit=> 50k => 50K - 30K => Balance => 20K => Tally
+Diffing algorithm=> exactly wat has changed
+
+custom component
+----------------
+1. First letter of component capital letter
+2. should return JSX
+
+function Welcome(){
+    return (
+        <div>
+        <h1>Hello</h1>
+        <h1>Hi</h1>
+        </div>
+    )
+}
+
+
+useState => hooks => function 
+
+state  => current state
+
+//useState destructure
+const [state, setState] = useState(initialValue)
+
+
+Class component 
+--------------
+1. Phases
+ >> Initialization => component is created
+ >> mounting => eg =>  jockey mounted on the horse => he sat on the horse
+       >> component where it get mounted / inserted to => DOM
+ >> updating => state or props gets updated
+ >> unmounting => removed from DOM  => scenario => conditional rendering, refresh, routing 
+
+
+
+ Methods
+ --------
+ 1. mounting
+ ------------
+
+ ComponentWillMount => component is going to be mounted(insert) to DOM
+ render => display component
+ ComponentDidMount => fetch, console.log => API call
+
+ 2. unmounting
+ ---------------
+ componentWillUnMount => removed from DOM 
+ componentDidUnMount => ❌
+
+ 3. Updating 
+ -----------
+
+ >> state
+componentWillUpdate, componentDidUpdate,
+
+ >> props
+ ReceiveProps, componentWillUpdate, componentDidUpdate,
+
+
+
+<LifeCycleA />
+      {people.map((person) => (
+        <h1>Hello {person}</h1>
+      ))}
+    
+
+Listing the state up => from child component 
+
+
+
+  const [items, setItems] = useState(itemsList);
+
+  console.log(items)
+
+
+undirectional
+-------------
+
+parent to child  ✅
+child to parent  ❌
+
+ context API  => props drilling     
+
+            App(items, setItems) => data 
+
+
+
+   ProductList(items)           ProductDetail (items)           
+
+
+context works in which model => Pub/Sub Model => Youtube
+
+Pub => Publisher =>create => video
+Provider => Youtube  => video =>subscriber 🔔 => not subscriber 🔕
+Sub => Subscriber
+
+context
+Publisher => createContext -> contextName
+Provider => Provider.context
+Subscriber => useContext 
+
+1. create a context => createContext()✅
+2. Provide => context.Provider ✅
+3. subscribe => useContext()✅
+
+
+
+Capstone Project
+-----------------
+
+Frontend
+----------
+ecommerce-> take any product json data
+
+Implement basic CRUD Operation 
+choose framework || plain CSS
+
+features 
+=========
+mandatory => AddToCart, payment || ordered successfully
+Search, filter, review
+
+Backend
+----------
+Express => server
+endpoints => get products, get product by ID, delete, edit, add
